@@ -53,25 +53,26 @@ Ensure you have the following installed on your machine:
    ## Project Structure
 
 ```plaintext
-.
-├── node_modules
-├── src
-│   ├── config
-│   │   └── db.js
-│   ├── controllers
-│   │   └── exampleController.js
-│   ├── models
-│   │   └── exampleModel.js
-│   ├── routes
-│   │   └── exampleRoutes.js
-│   ├── middleware
-│   │   └── exampleMiddleware.js
-│   ├── app.js
-│   └── server.js
-├── .env
-├── .gitignore
-├── package.json
-└── README.md
+
+Server
+   └──
+    ├── data
+    │     └──data.js
+    ├── models
+    │        ├── KPI.js
+    │        ├── product.js
+    │        └── Transaction.js
+    ├── routes
+    │       ├── daily-data.routes.js
+    │       ├── kpi.routes.js
+    │       ├── product.routes.js
+    │       └── transaction.routes.js
+    ├── node_modules
+    ├── index.js
+    ├── .env
+    ├── .gitignore
+    ├── package.json
+    └── README.md
 ```
 
 ### Frontend Setup
