@@ -74,8 +74,8 @@ Server
     ├── package.json
     └── README.md
 ```
--body-parser: Middleware to parse incoming request bodies.
--cors: Middleware to enable Cross-Origin Resource Sharing.
+-[body-parser]: Middleware to parse incoming request bodies.
+-[cors]: Middleware to enable Cross-Origin Resource Sharing.
 -dotenv: Loads environment variables from a .env file.
 -express: Fast, unopinionated, minimalist web framework for Node.js.
 -helmet: Helps secure Express apps by setting various HTTP headers.
