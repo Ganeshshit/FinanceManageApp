@@ -1,4 +1,7 @@
+# Project name
+This project is Finance Management and Prediction Using available or previous  Data
 # Backend Setup
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
