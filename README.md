@@ -50,6 +50,30 @@ Ensure you have the following installed on your machine:
 
     This will start the server using `nodemon`, which automatically restarts the server when file changes are detected.
 
+   ## Project Structure
+
+```plaintext
+.
+├── node_modules
+├── src
+│   ├── config
+│   │   └── db.js
+│   ├── controllers
+│   │   └── exampleController.js
+│   ├── models
+│   │   └── exampleModel.js
+│   ├── routes
+│   │   └── exampleRoutes.js
+│   ├── middleware
+│   │   └── exampleMiddleware.js
+│   ├── app.js
+│   └── server.js
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
+```
+
 ### Frontend Setup
    
 # React + TypeScript + Vite
