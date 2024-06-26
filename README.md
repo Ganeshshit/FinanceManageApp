@@ -19,8 +19,8 @@ Ensure you have the following installed on your machine:
 1. **Clone the repository:**
 
     ```bash
-    git clone <repository-url>
-    cd <repository-name>
+    git clone https://github.com/Ganeshshit/FinanceManageApp.git
+    cd FinanceManageApp
     ```
   
 
