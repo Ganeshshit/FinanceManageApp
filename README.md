@@ -74,6 +74,15 @@ Server
     ├── package.json
     └── README.md
 ```
+-body-parser: Middleware to parse incoming request bodies.
+-cors: Middleware to enable Cross-Origin Resource Sharing.
+-dotenv: Loads environment variables from a .env file.
+-express: Fast, unopinionated, minimalist web framework for Node.js.
+-helmet: Helps secure Express apps by setting various HTTP headers.
+-mongoose: MongoDB object modeling tool designed to work in an asynchronous environment.
+-mongoose-currency: Mongoose schema type for currency values.
+-morgan: HTTP request logger middleware.
+-nodemon: Utility that monitors for any changes in your source and automatically restarts your server.
 
 ### Frontend Setup
    
