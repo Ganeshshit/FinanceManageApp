@@ -40,6 +40,15 @@ Ensure you have the following installed on your machine:
     MONGO_URI="mongodb+srv://gsb021:45iRTFtLvIU0EuET@cluster0.ryemckw.mongodb.net/"
     PORT=1337
     ```
+## Running the Application
+
+1. **Start the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+    This will start the server using `nodemon`, which automatically restarts the server when file changes are detected.
    
 # React + TypeScript + Vite
 
