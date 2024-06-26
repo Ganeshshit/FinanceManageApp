@@ -51,7 +51,7 @@ mongoose
         app.listen(PORT, () => console.log(`Server run at port ${PORT} Mongourl :${process.env.MONGO_URI}`))
         // !ADD DATA TO THE DATABASE ON ONE TIME OR ANY  TIME NEEDED
         // await mongoose.connection.db.dropDatabase();
-        // KPI.insertMany(kpis);
+        // KPI.insertMany(kpis); 
         // prodeuct.insertMany(products)
         // Transaction.insertMany(transactions)
     })
