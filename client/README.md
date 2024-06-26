@@ -1,6 +1,13 @@
 # Project name
-This project is Finance Management and Prediction Using available or previous  Data
+This project is Finance Management and Prediction Using available or past  Data
 # Backend Setup
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Available Scripts](#available-scripts)
+- [Dependencies](#dependencies)
 
 # React + TypeScript + Vite
 
