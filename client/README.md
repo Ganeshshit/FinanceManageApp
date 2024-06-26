@@ -9,6 +9,13 @@ This project is Finance Management and Prediction Using available or past  Data
 - [Available Scripts](#available-scripts)
 - [Dependencies](#dependencies)
 
+## Prerequisites
+
+Ensure you have the following installed on your machine:
+- Node.js (version 14.x or later)
+- npm (Node package manager, comes with Node.js)
+- 
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
