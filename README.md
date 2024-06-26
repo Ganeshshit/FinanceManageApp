@@ -23,7 +23,11 @@ Ensure you have the following installed on your machine:
     cd FinanceManageApp
     ```
   
+2. **Install dependencies:**
 
+    ```bash
+    npm install
+    ```
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
