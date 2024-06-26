@@ -74,6 +74,7 @@ Server
     ├── package.json
     └── README.md
 ```
+## The project uses the following packages:
 - body-parser: Middleware to parse incoming request bodies.
 - cors: Middleware to enable Cross-Origin Resource Sharing.
 - dotenv: Loads environment variables from a .env file.
