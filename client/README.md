@@ -14,7 +14,15 @@ This project is Finance Management and Prediction Using available or past  Data
 Ensure you have the following installed on your machine:
 - Node.js (version 14.x or later)
 - npm (Node package manager, comes with Node.js)
-- 
+
+## Installation
+1. **Clone the repository:**
+
+    ```bash
+    git clone <repository-url>
+    cd <repository-name>
+    ```
+  
 
 # React + TypeScript + Vite
 
