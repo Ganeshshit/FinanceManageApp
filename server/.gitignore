@@ -1,0 +1,7 @@
+.env
+node_modules
+routes
+models
+data
+controller
+.dist
