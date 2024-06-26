@@ -28,6 +28,15 @@ Ensure you have the following installed on your machine:
     ```bash
     npm install
     ```
+
+3. **Set up environment variables:**
+
+    Create a `.env` file in the root directory of the project and add your environment variables. For example:
+
+    ```env
+    PORT=3000
+    MONGO_URI=mongodb://localhost:27017/your-database
+    ```
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
