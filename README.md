@@ -36,7 +36,11 @@ Ensure you have the following installed on your machine:
     ```env
     PORT=3000
     MONGO_URI=mongodb://localhost:27017/your-database
+    Or
+    MONGO_URI="mongodb+srv://gsb021:45iRTFtLvIU0EuET@cluster0.ryemckw.mongodb.net/"
+    PORT=1337
     ```
+   
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
