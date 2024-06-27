@@ -21,6 +21,7 @@ Ensure you have the following installed on your machine:
     ```bash
     git clone https://github.com/Ganeshshit/FinanceManageApp.git
     cd FinanceManageApp
+    cd server
     ```
   
 2. **Install dependencies:**
@@ -49,6 +50,7 @@ Ensure you have the following installed on your machine:
     ```
 
     This will start the server using `nodemon`, which automatically restarts the server when file changes are detected.
+   
 
    ## Project Structure
 
@@ -86,6 +88,55 @@ Server
 - nodemon: Utility that monitors for any changes in your source and automatically restarts your server.
 
 ### Frontend Setup
+```bash
+    cd client
+```
+#  **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+# **Set up environment variables:**
+   Create a `.env` file in the root directory of the project and add your environment variables. For example:
+   ```env
+   VITE_BASE_URL=http://localhost:1337
+   ```
+## Running the Application
+
+1. **Start the development server:**
+
+    ```bash
+    npm run dev
+    ```
+  ## Project Structure
+  ```plaintext
+.
+├── node_modules
+├── public
+│   ├── vite.svg
+│   └── ...
+├── src
+│   ├── assets
+│   │   └── images
+│   ├── components
+│   │   └── Boxheader.tsx
+|   |   ├──DashbardBox.tsx
+| 
+│   ├── pages
+│   │   └── HomePage.js
+│   ├── services
+│   │   └── api.js
+│   ├── styles
+│   │   └── main.css
+│   ├── App.js
+│   ├── index.js
+│   └── ...
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
+```
+  
    
 # React + TypeScript + Vite
 
