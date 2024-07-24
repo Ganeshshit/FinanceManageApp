@@ -1,5 +1,5 @@
-- [Project Link](https://finance-manage-app.vercel.app/)
-# Project name
+
+# Project name - [Project Link](https://finance-manage-app.vercel.app/)
 This project is Finance Management and Prediction Using available or past  Data
 # Backend Setup
 ## Table of Contents
