@@ -1,44 +1,48 @@
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
-import FlexBetween from "@/components/FlexBetween";
+// import FlexBetween from "@/components/FlexBetween";
 import {
-  useGetKpisQuery,
+  // useGetKpisQuery,
   useGetProductsQuery,
   useGetTransactionsQuery,
 } from "@/state/api";
-import { Box, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  // Typography,
+  useTheme
+} from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
-import React, { useMemo } from "react";
-import { Cell, Pie, PieChart } from "recharts";
+// import React, { useMemo } from "react";
+// import { Cell, Pie, PieChart } from "recharts";
 
 const Row3 = () => {
   const { palette } = useTheme();
-  const pieColors = [palette.primary[800], palette.primary[500]];
+  // const pieColors = [palette.primary.dark, palette.primary.light];
 
-  const { data: kpiData } = useGetKpisQuery();
+  // const { data: kpiData } = useGetKpisQuery();
   const { data: productData } = useGetProductsQuery();
   const { data: transactionData } = useGetTransactionsQuery();
 
-  const pieChartData = useMemo(() => {
-    if (kpiData && kpiData[0] && kpiData[0].expensesByCategory) {
-      const totalExpenses = kpiData[0].totalExpenses;
-      return Object.entries(kpiData[0].expensesByCategory).map(
-        ([key, value]) => {
-          return [
-            {
-              name: key,
-              value: value,
-            },
-            {
-              name: `${key} of Total`,
-              value: totalExpenses - value,
-            },
-          ];
-        }
-      );
-    }
-    return [];
-  }, [kpiData]);
+  // const pieChartData = useMemo(() => {
+  //   if (kpiData && kpiData[0] && kpiData[0].expensesByCategory) {
+  //     const totalExpenses = kpiData[0].totalExpenses;
+  //     return Object.entries(kpiData[0].expensesByCategory).map(
+  //       ([key, value]) => {
+  //         return [
+  //           {
+  //             name: key,
+  //             value: value,
+  //           },
+  //           {
+  //             name: `${key} of Total`,
+  //             value: totalExpenses - value,
+  //           },
+  //         ];
+  //       }
+  //     );
+  //   }
+  //   return [];
+  // }, [kpiData]);
 
   const productColumns = [
     {
@@ -90,6 +94,7 @@ const Row3 = () => {
     <>
       <DashboardBox gridArea="g">
         <BoxHeader
+        subTitle=""
           title="List of Products"
           sideText={`${productData?.length} products`}
         />
@@ -124,6 +129,7 @@ const Row3 = () => {
       </DashboardBox>
       <DashboardBox gridArea="h">
         <BoxHeader
+          subTitle=""
           title="Recent Orders"
           sideText={`${transactionData?.length} latest transactions`}
         />

@@ -2,12 +2,12 @@ import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
 import {
-  useAddDailyDataMutation,
+  // useAddDailyDataMutation,
   useGetKpisQuery,
   useGetProductsQuery,
 } from "@/state/api";
 import { Box, Typography, useTheme } from "@mui/material";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import {
   Tooltip,
   CartesianGrid,
@@ -31,7 +31,7 @@ const pieData = [
 
 const Row2 = () => {
   const { palette } = useTheme();
-  const pieColors = [palette.primary[800], palette.primary[300]];
+  const pieColors = [palette.primary.dark, palette.primary.light];
   const { data: operationalData } = useGetKpisQuery();
   const { data: productData } = useGetProductsQuery();
 
@@ -43,6 +43,7 @@ const Row2 = () => {
           return {
             name: month.substring(0, 3),
             "Operational Expenses": operationalExpenses,
+            // "Operational Expenses":Number,
             "Non Operational Expenses": nonOperationalExpenses,
           };
         }
@@ -67,6 +68,7 @@ const Row2 = () => {
     <>
       <DashboardBox gridArea="d">
         <BoxHeader
+          subTitle=""
           title="Operational vs Non-Operational Expenses"
           sideText="+4%"
         />
@@ -105,7 +107,7 @@ const Row2 = () => {
               yAxisId="left"
               type="monotone"
               dataKey="Non Operational Expenses"
-              stroke={palette.tertiary[500]}
+              stroke={palette.secondary.main}
             />
             <Line
               yAxisId="right"
@@ -117,7 +119,9 @@ const Row2 = () => {
         </ResponsiveContainer>
       </DashboardBox>
       <DashboardBox gridArea="e">
-        <BoxHeader title="Campaigns and Targets" sideText="+4%" />
+        <BoxHeader
+        subTitle=""
+          title="Campaigns and Targets" sideText="+4%" />
         <FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem">
           <PieChart
             width={110}
@@ -137,14 +141,14 @@ const Row2 = () => {
               paddingAngle={2}
               dataKey="value"
             >
-              {pieData.map((entry, index) => (
+              {pieData.map((_entry, index) => (
                 <Cell key={`cell-${index}`} fill={pieColors[index]} />
               ))}
             </Pie>
           </PieChart>
           <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
             <Typography variant="h5">Target Sales</Typography>
-            <Typography m="0.3rem 0" variant="h3" color={palette.primary[300]}>
+            <Typography m="0.3rem 0" variant="h3" color={palette.primary.main}>
               83
             </Typography>
             <Typography variant="h6">
@@ -164,7 +168,9 @@ const Row2 = () => {
         </FlexBetween>
       </DashboardBox>
       <DashboardBox gridArea="f">
-        <BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
+        <BoxHeader
+        subTitle=""
+          title="Product Prices vs Expenses" sideText="+4%" />
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart
             margin={{
@@ -198,7 +204,7 @@ const Row2 = () => {
             <Scatter
               name="Product Expense Ratio"
               data={productExpenseData}
-              fill={palette.tertiary[500]}
+              fill={palette.secondary.main}
             />
           </ScatterChart>
         </ResponsiveContainer>

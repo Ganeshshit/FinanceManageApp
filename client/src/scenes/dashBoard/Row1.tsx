@@ -65,7 +65,7 @@ const Row1 = () => {
       <DashboardBox gridArea="a">
         <BoxHeader
           title="Revenue and Expenses"
-          subtitle="top line represents revenue, bottom line represents expenses"
+          subTitle="top line represents revenue, bottom line represents expenses"
           sideText="+4%"
         />
         <ResponsiveContainer width="100%" height="100%">
@@ -84,24 +84,25 @@ const Row1 = () => {
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={palette.primary[300]}
+                  stopColor={palette.primary.light}
                   stopOpacity={0.5}
                 />
                 <stop
                   offset="95%"
-                  stopColor={palette.primary[300]}
+                  // stopColor={palette.primary[300]}
+                  stopColor={palette.primary.dark}
                   stopOpacity={0}
                 />
               </linearGradient>
               <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={palette.primary[300]}
+                  stopColor={palette.primary.dark}
                   stopOpacity={0.5}
                 />
                 <stop
                   offset="95%"
-                  stopColor={palette.primary[300]}
+                  stopColor={palette.primary.dark}
                   stopOpacity={0}
                 />
               </linearGradient>
@@ -140,7 +141,7 @@ const Row1 = () => {
       <DashboardBox gridArea="b">
         <BoxHeader
           title="Profit and Revenue"
-          subtitle="top line represents revenue, bottom line represents expenses"
+          subTitle="top line represents revenue, bottom line represents expenses"
           sideText="+4%"
         />
         <ResponsiveContainer width="100%" height="100%">
@@ -185,7 +186,7 @@ const Row1 = () => {
               yAxisId="left"
               type="monotone"
               dataKey="profit"
-              stroke={palette.tertiary[500]}
+              stroke={palette.secondary.main}
             />
             <Line
               yAxisId="right"
@@ -199,7 +200,7 @@ const Row1 = () => {
       <DashboardBox gridArea="c">
         <BoxHeader
           title="Revenue Month by Month"
-          subtitle="graph representing the revenue month by month"
+          subTitle="graph representing the revenue month by month"
           sideText="+4%"
         />
         <ResponsiveContainer width="100%" height="100%">
@@ -218,12 +219,12 @@ const Row1 = () => {
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={palette.primary[300]}
+                  stopColor={palette.primary.main}
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor={palette.primary[300]}
+                  stopColor={palette.primary.main}
                   stopOpacity={0}
                 />
               </linearGradient>

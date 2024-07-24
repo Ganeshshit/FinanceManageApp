@@ -1,14 +1,14 @@
 import FlexBetween from "@/components/FlexBetween";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography,  } from "@mui/material";
 import { useState } from "react";
 import PixIcon from "@mui/icons-material/Pix";
 import { Link } from "react-router-dom";
 import { grey, blue } from "@mui/material/colors";
 
-type Props = {};
+// type Props = {};
 
-const Navbar = (props: Props) => {
-  const palette = useTheme();
+const Navbar = () => {
+  // const palette = useTheme();
   const [selected, setSelected] = useState("dashboard");
 
   return (

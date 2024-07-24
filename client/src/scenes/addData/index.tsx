@@ -7,22 +7,21 @@ import {
   Button,
   TextField,
   Typography,
-  useMediaQuery,
+ 
 } from "@mui/material";
-import { useTheme } from "@mui/material";
-import { blue } from "@mui/material/colors";
+// import { useTheme } from "@mui/material";
 import { useState } from "react";
 
-type Props = {};
 
-const AddData = (props: Props) => {
-  const { palette } = useTheme();
+
+const AddData = () => {
+  // const { palette } = useTheme();
   const [date, setDate] = useState("");
   const [revenue, setRevenue] = useState("");
   const [expenses, setExpenses] = useState("");
   const [addDailyKpi, { isLoading, isSuccess, isError }] =
     useAddDailyDataMutation();
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
       await addDailyKpi({

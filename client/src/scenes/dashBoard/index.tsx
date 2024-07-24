@@ -1,23 +1,26 @@
-import DashboardBox from "@/components/DashboardBox";
-import { Box, useMediaQuery } from "@mui/material";
+// import DashboardBox from "@/components/DashboardBox";
+import {
+  Box,
+  // useMediaQuery
+} from "@mui/material";
 import { useTheme } from "@mui/material";
 import Row1 from "./Row1";
 import Row2 from "./Row2";
 import Row3 from "./Row3";
 
-type Props = {};
-const gridTemplateBigScreen = `
-"a b c"
-"a b c"
-"a b c"
-"a b f"
-"d e f"
-"d e f"
-"d h i"
-"g h i"
-"g h j"
-"g h j"
-`;
+// type Props = {};
+// const gridTemplateBigScreen = `
+// "a b c"
+// "a b c"
+// "a b c"
+// "a b f"
+// "d e f"
+// "d e f"
+// "d h i"
+// "g h i"
+// "g h j"
+// "g h j"
+// `;
 
 const gridTemplateSmallScreen = `
 "a"
@@ -51,8 +54,8 @@ const gridTemplateSmallScreen = `
 "j"
 "j"
 `;
-const Dashboard = (props: Props) => {
-  const isAboveMediumScreens = useMediaQuery("(min-width:1200px)");
+const Dashboard = () => {
+  // const isAboveMediumScreens = useMediaQuery("(min-width:1200px)");
   const { palette } = useTheme();
   return (
     <Box
