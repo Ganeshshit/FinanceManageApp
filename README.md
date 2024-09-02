@@ -9,6 +9,7 @@ This project is Finance Management and Prediction Using available or past  Data
 - [Project Structure](#project-structure)
 - [Available Scripts](#available-scripts)
 - [Dependencies](#dependencies)
+- [Host platform](#dependencies)
 
 ## Prerequisites
 
@@ -169,3 +170,8 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+- 
+## Host platform
+Frontend host on : [Vercel](https://vercel.com/)
+Api host on : [Render](https://render.com/)
