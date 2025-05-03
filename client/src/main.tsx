@@ -2,6 +2,8 @@
 import ReactDOM from "react-dom/client";
 import App from "@/App.tsx";
 import "@/index.css";
+// Import the expanded theme to ensure the type definitions are loaded
+import "@/expanded-theme";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";

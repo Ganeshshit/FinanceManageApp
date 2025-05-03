@@ -23,7 +23,7 @@ const YearlyView = () => {
 
   const formattedData = useMemo(() => {
     if (!data) return [];
-    
+
     return data.map((item) => ({
       year: item.year,
       Revenue: item.revenue,
@@ -54,7 +54,7 @@ const YearlyView = () => {
           {view === "revenue" ? "Show Profit View" : "Show Revenue View"}
         </Button>
       </FlexBetween>
-      
+
       {isLoading ? (
         <Box display="flex" justifyContent="center" alignItems="center" height="80%">
           <Typography variant="h5">Loading yearly data...</Typography>
@@ -72,9 +72,9 @@ const YearlyView = () => {
               }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke={palette.grey[800]} />
-              <XAxis 
-                dataKey="year" 
-                tickLine={false} 
+              <XAxis
+                dataKey="year"
+                tickLine={false}
                 style={{ fontSize: "10px" }}
               />
               <YAxis
@@ -82,26 +82,26 @@ const YearlyView = () => {
                 style={{ fontSize: "10px" }}
                 tickFormatter={(v) => `$${v.toLocaleString()}`}
               />
-              <Tooltip 
+              <Tooltip
                 formatter={(value) => [`$${Number(value).toLocaleString()}`, ""]}
                 labelFormatter={(value) => `Year: ${value}`}
               />
               <Legend />
-              <Bar 
-                dataKey="Revenue" 
-                fill={palette.primary.main} 
+              <Bar
+                dataKey="Revenue"
+                fill={palette.primary.main}
               />
-              <Bar 
-                dataKey="Expenses" 
-                fill={palette.secondary.main} 
+              <Bar
+                dataKey="Expenses"
+                fill={palette.secondary.main}
               />
-              <Bar 
-                dataKey="Operational Expenses" 
-                fill={palette.tertiary.main} 
+              <Bar
+                dataKey="Operational Expenses"
+                fill={palette.info.main}
               />
-              <Bar 
-                dataKey="Non-Operational Expenses" 
-                fill={palette.grey[700]} 
+              <Bar
+                dataKey="Non-Operational Expenses"
+                fill={palette.grey[700]}
               />
             </BarChart>
           ) : (
@@ -115,9 +115,9 @@ const YearlyView = () => {
               }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke={palette.grey[800]} />
-              <XAxis 
-                dataKey="year" 
-                tickLine={false} 
+              <XAxis
+                dataKey="year"
+                tickLine={false}
                 style={{ fontSize: "10px" }}
               />
               <YAxis
@@ -125,23 +125,23 @@ const YearlyView = () => {
                 style={{ fontSize: "10px" }}
                 tickFormatter={(v) => `$${v.toLocaleString()}`}
               />
-              <Tooltip 
+              <Tooltip
                 formatter={(value) => [`$${Number(value).toLocaleString()}`, ""]}
                 labelFormatter={(value) => `Year: ${value}`}
               />
               <Legend />
-              <Line 
-                type="monotone" 
-                dataKey="Revenue" 
-                stroke={palette.primary.main} 
-                strokeWidth={2} 
+              <Line
+                type="monotone"
+                dataKey="Revenue"
+                stroke={palette.primary.main}
+                strokeWidth={2}
                 dot={{ strokeWidth: 5 }}
               />
-              <Line 
-                type="monotone" 
-                dataKey="Profit" 
-                stroke={palette.secondary.main} 
-                strokeWidth={2} 
+              <Line
+                type="monotone"
+                dataKey="Profit"
+                stroke={palette.secondary.main}
+                strokeWidth={2}
                 dot={{ strokeWidth: 5 }}
               />
             </LineChart>

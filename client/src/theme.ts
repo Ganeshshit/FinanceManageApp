@@ -36,7 +36,16 @@ export const tokens = {
   },
   tertiary: {
     // purple
+    100: "#c4c3e6",
+    200: "#b5b3e0",
+    300: "#a5a3da",
+    400: "#9693d4",
     500: "#8884d8",
+    600: "#6d6aad",
+    700: "#524f82",
+    800: "#363556",
+    900: "#1b1a2b",
+    main: "#8884d8",
   },
   background: {
     light: "#2d2d34",
@@ -58,6 +67,9 @@ export const themeSettings = {
     },
     tertiary: {
       ...tokens.tertiary,
+      main: tokens.tertiary.main,
+      light: tokens.tertiary[400],
+      dark: tokens.tertiary[700],
     },
     grey: {
       ...tokens.grey,
