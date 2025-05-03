@@ -45,7 +45,6 @@ export const tokens = {
     700: "#524f82",
     800: "#363556",
     900: "#1b1a2b",
-    main: "#8884d8",
   },
   background: {
     light: "#2d2d34",
@@ -67,7 +66,7 @@ export const themeSettings = {
     },
     tertiary: {
       ...tokens.tertiary,
-      main: tokens.tertiary.main,
+      main: tokens.tertiary[500],
       light: tokens.tertiary[400],
       dark: tokens.tertiary[700],
     },

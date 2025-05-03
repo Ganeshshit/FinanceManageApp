@@ -1,14 +1,6 @@
 
-import { Palette, PaletteColor } from "@mui/material/styles/createPalette";
-
+// Type augmentation for Material UI's palette
 declare module "@mui/material/styles/createPalette" {
-    interface PaletteColor {
-        [key: number]: string;
-        main: string;
-        light?: string;
-        dark?: string;
-    }
-
     interface Palette {
         tertiary: PaletteColor;
     }
