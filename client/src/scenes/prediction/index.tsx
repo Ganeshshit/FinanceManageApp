@@ -19,7 +19,7 @@ import regression, { DataPoint } from "regression";
 const Predictions = () => {
   const { palette } = useTheme();
   const [isPredictions, setIsPredictions] = useState(false);
-  const { data: kpiData } = useGetKpisQuery();
+  const { data: kpiData, isLoading } = useGetKpisQuery();
 
   const formattedData = useMemo(() => {
     if (!kpiData) return [];
@@ -63,6 +63,11 @@ const Predictions = () => {
           Show Predicted Revenue for Next Year
         </Button>
       </FlexBetween>
+      {isLoading ? (
+        <Box display="flex" justifyContent="center" alignItems="center" height="80%">
+          <Typography variant="h5">Loading data...</Typography>
+        </Box>
+      ) : (
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={formattedData}
@@ -114,6 +119,7 @@ const Predictions = () => {
           )}
         </LineChart>
       </ResponsiveContainer>
+      )}
     </DashboardBox>
   );
 };

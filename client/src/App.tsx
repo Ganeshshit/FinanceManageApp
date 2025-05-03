@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-
 import "./App.css";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
@@ -9,9 +8,9 @@ import Navbar from "./scenes/navbar";
 import Dashboard from "@/scenes/dashBoard/index";
 import Prediction from "./scenes/prediction";
 import AddData from "./scenes/addData";
+import YearlyView from "./scenes/yearlyView";
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), []);
-
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
@@ -22,11 +21,11 @@ function App() {
             <Route path="/addData" element={<AddData />} />
             <Route path="/" element={<Dashboard />} />
             <Route path="/prediction" element={<Prediction />} />
+            <Route path="/yearly" element={<YearlyView />} />
           </Routes>
         </Box>
       </ThemeProvider>
     </BrowserRouter>
   );
 }
-
 export default App;

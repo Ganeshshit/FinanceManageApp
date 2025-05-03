@@ -7,20 +7,21 @@ import {
   Button,
   TextField,
   Typography,
- 
+
 } from "@mui/material";
 // import { useTheme } from "@mui/material";
 import { useState } from "react";
-
-
 
 const AddData = () => {
   // const { palette } = useTheme();
   const [date, setDate] = useState("");
   const [revenue, setRevenue] = useState("");
   const [expenses, setExpenses] = useState("");
+  const [operationalExpenses, setOperationalExpenses] = useState("");
+  const [nonOperationalExpenses, setNonOperationalExpenses] = useState("");
   const [addDailyKpi, { isLoading, isSuccess, isError }] =
     useAddDailyDataMutation();
+
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
@@ -28,12 +29,16 @@ const AddData = () => {
         date,
         revenue,
         expenses,
+        operationalExpenses,
+        nonOperationalExpenses,
         _id: "",
       }).unwrap();
       // handle success, e.g., show a success message, reset form, etc.
       setDate("");
       setRevenue("");
       setExpenses("");
+      setOperationalExpenses("");
+      setNonOperationalExpenses("");
     } catch (error) {
       // handle error, e.g., show an error message
       console.error("Failed to add daily KPI:", error);
@@ -93,6 +98,27 @@ const AddData = () => {
             placeholder="e.g., $123.45"
             required
           />
+          <TextField
+            label="Operational Expenses"
+            type="text"
+            value={operationalExpenses}
+            onChange={(e) => setOperationalExpenses(e.target.value)}
+            fullWidth
+            margin="normal"
+            placeholder="e.g., $75.00"
+          />
+          <TextField
+            label="Non-Operational Expenses"
+            type="text"
+            value={nonOperationalExpenses}
+            onChange={(e) => setNonOperationalExpenses(e.target.value)}
+            fullWidth
+            margin="normal"
+            placeholder="e.g., $48.45"
+          />
+          <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 2 }}>
+            Note: Operational and Non-Operational Expenses are optional. If not provided, they will default to 0.
+          </Typography>
           <Button
             type="submit"
             variant="contained"

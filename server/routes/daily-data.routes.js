@@ -6,55 +6,99 @@ const router = express.Router()
 
 router.post('/daily-data', async (req, res) => {
     try {
-        const { date, revenue, expenses } = req.body;
+        const { date, revenue, expenses, operationalExpenses = 0, nonOperationalExpenses = 0 } = req.body;
         const revenueNum = parseFloat(revenue.replace('$', '').replace(',', ''));
         const expensesNum = parseFloat(expenses.replace('$', '').replace(',', ''));
+        const operationalExpensesNum = parseFloat(operationalExpenses.toString().replace('$', '').replace(',', '') || '0');
+        const nonOperationalExpensesNum = parseFloat(nonOperationalExpenses.toString().replace('$', '').replace(',', '') || '0');
+        const profitNum = revenueNum - expensesNum;
 
-        // Find the KPI document (assuming only one document exists)
         const kpi = await KPI.findById("63bf8239f03239e002001612");
-
         if (!kpi) {
             return res.status(404).json({ message: 'KPI data not found' });
         }
 
-        // Check if daily data already exists for the given date
+        // Update daily data
         const dailyIndex = kpi.dailyData.findIndex(d => d.date === date);
-
         if (dailyIndex !== -1) {
-            // Update existing daily data
             kpi.dailyData[dailyIndex].revenue = revenueNum;
             kpi.dailyData[dailyIndex].expenses = expensesNum;
+            kpi.dailyData[dailyIndex].operationalExpenses = operationalExpensesNum;
+            kpi.dailyData[dailyIndex].nonOperationalExpenses = nonOperationalExpensesNum;
+            kpi.dailyData[dailyIndex].profit = profitNum;
         } else {
-            // Add new daily data
-            kpi.dailyData.push({ date, revenue: revenueNum, expenses: expensesNum });
+            kpi.dailyData.push({
+                date,
+                revenue: revenueNum,
+                expenses: expensesNum,
+                operationalExpenses: operationalExpensesNum,
+                nonOperationalExpenses: nonOperationalExpensesNum,
+                profit: profitNum
+            });
         }
 
         // Update monthly data
-        const month = new Date(date).toLocaleString('default', { month: 'long' }).toLowerCase();
+        const dateObj = new Date(date);
+        const month = dateObj.toLocaleString('default', { month: 'long' }).toLowerCase();
         const monthIndex = kpi.monthlyData.findIndex(m => m.month === month);
-
         if (monthIndex !== -1) {
-            // Update existing monthly data
             kpi.monthlyData[monthIndex].revenue += revenueNum;
             kpi.monthlyData[monthIndex].expenses += expensesNum;
+            kpi.monthlyData[monthIndex].operationalExpenses += operationalExpensesNum;
+            kpi.monthlyData[monthIndex].nonOperationalExpenses += nonOperationalExpensesNum;
+            kpi.monthlyData[monthIndex].profit += profitNum;
         } else {
-            // Add new monthly data
             kpi.monthlyData.push({
                 month,
                 revenue: revenueNum,
                 expenses: expensesNum,
-                operationalExpenses: 0, // Initialize as needed
-                nonOperationalExpenses: 0, // Initialize as needed
+                operationalExpenses: operationalExpensesNum,
+                nonOperationalExpenses: nonOperationalExpensesNum,
+                profit: profitNum
             });
         }
 
-        // Save the updated document
-        await kpi.save();
+        // Update yearly data
+        const year = dateObj.getFullYear().toString();
+        const yearIndex = kpi.yearlyData.findIndex(y => y.year === year);
+        if (yearIndex !== -1) {
+            kpi.yearlyData[yearIndex].revenue += revenueNum;
+            kpi.yearlyData[yearIndex].expenses += expensesNum;
+            kpi.yearlyData[yearIndex].operationalExpenses += operationalExpensesNum;
+            kpi.yearlyData[yearIndex].nonOperationalExpenses += nonOperationalExpensesNum;
+            kpi.yearlyData[yearIndex].profit += profitNum;
+        } else {
+            kpi.yearlyData.push({
+                year,
+                revenue: revenueNum,
+                expenses: expensesNum,
+                operationalExpenses: operationalExpensesNum,
+                nonOperationalExpenses: nonOperationalExpensesNum,
+                profit: profitNum
+            });
+        }
 
+        await kpi.save();
         res.status(200).json(kpi);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
     }
-})
+});
+
+// Get yearly data
+router.get('/yearly-data', async (req, res) => {
+    try {
+        const kpi = await KPI.findById("63bf8239f03239e002001612");
+        if (!kpi) {
+            return res.status(404).json({ message: 'KPI data not found' });
+        }
+
+        res.status(200).json(kpi.yearlyData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
 export default router;

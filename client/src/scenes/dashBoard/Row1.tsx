@@ -20,44 +20,41 @@ import {
 
 const Row1 = () => {
   const { palette } = useTheme();
-  const { data } = useGetKpisQuery();
-  console.log(data);
+  const { data, isLoading } = useGetKpisQuery();
+
   const revenue = useMemo(() => {
-    return (
-      data &&
-      data[0].monthlyData.map(({ month, revenue }) => {
-        return {
-          name: month.substring(0, 3),
-          revenue: revenue,
-        };
-      })
-    );
+    if (!data || !data[0] || !data[0].monthlyData) return [];
+
+    return data[0].monthlyData.map(({ month, revenue }) => {
+      return {
+        name: month.substring(0, 3),
+        revenue: revenue,
+      };
+    });
   }, [data]);
 
   const revenueExpenses = useMemo(() => {
-    return (
-      data &&
-      data[0].monthlyData.map(({ month, revenue, expenses }) => {
-        return {
-          name: month.substring(0, 3),
-          revenue: revenue,
-          expenses: expenses,
-        };
-      })
-    );
+    if (!data || !data[0] || !data[0].monthlyData) return [];
+
+    return data[0].monthlyData.map(({ month, revenue, expenses }) => {
+      return {
+        name: month.substring(0, 3),
+        revenue: revenue,
+        expenses: expenses,
+      };
+    });
   }, [data]);
 
   const revenueProfit = useMemo(() => {
-    return (
-      data &&
-      data[0].monthlyData.map(({ month, revenue, expenses }) => {
-        return {
-          name: month.substring(0, 3),
-          revenue: revenue,
-          profit: (revenue - expenses).toFixed(2),
-        };
-      })
-    );
+    if (!data || !data[0] || !data[0].monthlyData) return [];
+
+    return data[0].monthlyData.map(({ month, revenue, expenses }) => {
+      return {
+        name: month.substring(0, 3),
+        revenue: revenue,
+        profit: (revenue - expenses).toFixed(2),
+      };
+    });
   }, [data]);
 
   return (
@@ -68,6 +65,11 @@ const Row1 = () => {
           subTitle="top line represents revenue, bottom line represents expenses"
           sideText="+4%"
         />
+        {isLoading ? (
+          <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            Loading...
+          </div>
+        ) :
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             width={500}
@@ -137,6 +139,7 @@ const Row1 = () => {
             />
           </AreaChart>
         </ResponsiveContainer>
+        }
       </DashboardBox>
       <DashboardBox gridArea="b">
         <BoxHeader
@@ -144,6 +147,11 @@ const Row1 = () => {
           subTitle="top line represents revenue, bottom line represents expenses"
           sideText="+4%"
         />
+        {isLoading ? (
+          <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            Loading...
+          </div>
+        ) :
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             width={500}
@@ -196,6 +204,7 @@ const Row1 = () => {
             />
           </LineChart>
         </ResponsiveContainer>
+        }
       </DashboardBox>
       <DashboardBox gridArea="c">
         <BoxHeader
@@ -203,6 +212,11 @@ const Row1 = () => {
           subTitle="graph representing the revenue month by month"
           sideText="+4%"
         />
+        {isLoading ? (
+          <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            Loading...
+          </div>
+        ) :
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             width={500}
@@ -245,6 +259,7 @@ const Row1 = () => {
             <Bar dataKey="revenue" fill="url(#colorRevenue)" />
           </BarChart>
         </ResponsiveContainer>
+        }
       </DashboardBox>
     </>
   );

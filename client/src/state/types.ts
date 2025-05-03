@@ -15,16 +15,20 @@ export interface Day {
   id: String;
   date: String;
   revenue: number;
-  expense: number;
+  expenses: number;
+  operationalExpenses: number;
+  nonOperationalExpenses: number;
+  profit: number;
 }
-// export interface operationalExpenses {
-//   id: String;
-//   month: String;
-//   revenue: number;
-//   expenses: number;
-//   nonOperationalExpenses: number;
-//  operationalExpenses: number;
-// }
+export interface Year {
+  id: String;
+  year: String;
+  revenue: number;
+  expenses: number;
+  operationalExpenses: number;
+  nonOperationalExpenses: number;
+  profit: number;
+}
 
 export interface GetKpiResponse {
   id: String;
@@ -32,10 +36,11 @@ export interface GetKpiResponse {
   __v: number;
   totalProfit: number;
   totalRevenue: number;
-
   totalExpenses: number;
   expensesByCategory: ExpensesByCategory;
   monthlyData: Array<Month>;
+  dailyData: Array<Day>;
+  yearlyData: Array<Year>;
 }
 export interface GetProductResponse {
   id: String;
@@ -58,6 +63,8 @@ export interface addDailyUpdateRequest {
   date: string;
   revenue: string;
   expenses: string;
+  operationalExpenses?: string;
+  nonOperationalExpenses?: string;
 }
 export interface addDailyUpdateRespons {
   success: boolean;
@@ -65,6 +72,9 @@ export interface addDailyUpdateRespons {
   data: {
     date: string;
     revenue: string;
-    expense: string;
+    expenses: string;
+    operationalExpenses: string;
+    nonOperationalExpenses: string;
+    profit: string;
   };
 }

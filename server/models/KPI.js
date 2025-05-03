@@ -18,7 +18,21 @@ const dailySchema = new Schema({
         currncy: "USD",
         get: (v) => v / 100
     },
-
+    operationalExpenses: {
+        type: mongoose.Types.Currency,
+        currncy: "USD",
+        get: (v) => v / 100
+    },
+    nonOperationalExpenses: {
+        type: mongoose.Types.Currency,
+        currncy: "USD",
+        get: (v) => v / 100
+    },
+    profit: {
+        type: mongoose.Types.Currency,
+        currncy: "USD",
+        get: (v) => v / 100
+    }
 },
     { toJSON: { getters: true } }
 )
@@ -45,8 +59,42 @@ const monthlySchema = new Schema({
         currncy: "USD",
         get: (v) => v / 100
     },
+    profit: {
+        type: mongoose.Types.Currency,
+        currncy: "USD",
+        get: (v) => v / 100
+    }
+},
+    { toJSON: { getters: true } }
+)
 
-
+const yearlySchema = new Schema({
+    year: String,
+    revenue: {
+        type: mongoose.Types.Currency,
+        currncy: "USD",
+        get: (v) => v / 100
+    },
+    expenses: {
+        type: mongoose.Types.Currency,
+        currncy: "USD",
+        get: (v) => v / 100
+    },
+    operationalExpenses: {
+        type: mongoose.Types.Currency,
+        currncy: "USD",
+        get: (v) => v / 100
+    },
+    nonOperationalExpenses: {
+        type: mongoose.Types.Currency,
+        currncy: "USD",
+        get: (v) => v / 100
+    },
+    profit: {
+        type: mongoose.Types.Currency,
+        currncy: "USD",
+        get: (v) => v / 100
+    }
 },
     { toJSON: { getters: true } }
 )
@@ -58,7 +106,8 @@ const KPISchema = new Schema(
             type: mongoose.Types.Currency,
             currncy: "USD",
             get: (v) => v / 100
-        }, totalRevenue: {
+        },
+        totalRevenue: {
             type: mongoose.Types.Currency,
             currncy: "USD",
             get: (v) => v / 100
@@ -77,7 +126,8 @@ const KPISchema = new Schema(
             }
         },
         monthlyData: [monthlySchema],
-        dailyData: [dailySchema]
+        dailyData: [dailySchema],
+        yearlyData: [yearlySchema]
     },
     { timestamps: true, toJSON: { getters: true } }
 );

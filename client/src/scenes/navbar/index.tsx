@@ -26,7 +26,7 @@ const Navbar = () => {
             to="/addData"
             onClick={() => setSelected("addData")}
             style={{
-              color: selected === "dashboard" ? "inherit" : grey[700],
+              color: selected === "addData" ? "inherit" : grey[700],
               textDecoration: "inherit",
             }}
           >
@@ -42,7 +42,7 @@ const Navbar = () => {
               textDecoration: "inherit",
             }}
           >
-            Dash Board
+            Dashboard
           </Link>
         </Box>
         <Box sx={{ "&:hover": { color: blue[300] } }}>
@@ -51,11 +51,22 @@ const Navbar = () => {
             onClick={() => setSelected("prediction")}
             style={{
               color: selected === "prediction" ? "inherit" : grey[700],
-
               textDecoration: "inherit",
             }}
           >
             Prediction
+          </Link>
+        </Box>
+        <Box sx={{ "&:hover": { color: blue[300] } }}>
+          <Link
+            to="/yearly"
+            onClick={() => setSelected("yearly")}
+            style={{
+              color: selected === "yearly" ? "inherit" : grey[700],
+              textDecoration: "inherit",
+            }}
+          >
+            Yearly View
           </Link>
         </Box>
       </FlexBetween>

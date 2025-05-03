@@ -32,36 +32,33 @@ const pieData = [
 const Row2 = () => {
   const { palette } = useTheme();
   const pieColors = [palette.primary.dark, palette.primary.light];
-  const { data: operationalData } = useGetKpisQuery();
-  const { data: productData } = useGetProductsQuery();
+  const { data: operationalData, isLoading: isLoadingKpis } = useGetKpisQuery();
+  const { data: productData, isLoading: isLoadingProducts } = useGetProductsQuery();
 
   const operationalExpenses = useMemo(() => {
-    return (
-      operationalData &&
-      operationalData[0].monthlyData.map(
-        ({ month, operationalExpenses, nonOperationalExpenses }) => {
-          return {
-            name: month.substring(0, 3),
-            "Operational Expenses": operationalExpenses,
-            // "Operational Expenses":Number,
-            "Non Operational Expenses": nonOperationalExpenses,
-          };
-        }
-      )
+    if (!operationalData || !operationalData[0] || !operationalData[0].monthlyData) return [];
+
+    return operationalData[0].monthlyData.map(
+      ({ month, operationalExpenses, nonOperationalExpenses }) => {
+        return {
+          name: month.substring(0, 3),
+          "Operational Expenses": operationalExpenses,
+          "Non Operational Expenses": nonOperationalExpenses,
+        };
+      }
     );
   }, [operationalData]);
 
   const productExpenseData = useMemo(() => {
-    return (
-      productData &&
-      productData.map(({ _id, price, expense }) => {
-        return {
-          id: _id,
-          price: price,
-          expense: expense,
-        };
-      })
-    );
+    if (!productData) return [];
+
+    return productData.map(({ _id, price, expense }) => {
+      return {
+        id: _id,
+        price: price,
+        expense: expense,
+      };
+    });
   }, [productData]);
 
   return (
@@ -72,6 +69,11 @@ const Row2 = () => {
           title="Operational vs Non-Operational Expenses"
           sideText="+4%"
         />
+        {isLoadingKpis ? (
+          <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            Loading...
+          </div>
+        ) : (
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={operationalExpenses}
@@ -117,6 +119,7 @@ const Row2 = () => {
             />
           </LineChart>
         </ResponsiveContainer>
+        )}
       </DashboardBox>
       <DashboardBox gridArea="e">
         <BoxHeader
@@ -169,8 +172,13 @@ const Row2 = () => {
       </DashboardBox>
       <DashboardBox gridArea="f">
         <BoxHeader
-        subTitle=""
+          subTitle=""
           title="Product Prices vs Expenses" sideText="+4%" />
+        {isLoadingProducts ? (
+          <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            Loading...
+          </div>
+        ) : (
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart
             margin={{
@@ -208,6 +216,7 @@ const Row2 = () => {
             />
           </ScatterChart>
         </ResponsiveContainer>
+        )}
       </DashboardBox>
     </>
   );
